@@ -1,13 +1,22 @@
 package com.example.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.example.model.Otp;
 import com.example.model.User;
+import com.example.repository.UserRepository;
 
 @Service
 public class UserService implements UserServiceContract{
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
+	@Autowired
+	private UserRepository userRepository;
 
 	@Override
 	public void saveUser(User user) {
