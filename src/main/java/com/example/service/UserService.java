@@ -21,6 +21,8 @@ public class UserService implements UserServiceContract{
 	@Override
 	public void saveUser(User user) {
 		// TODO Auto-generated method stub
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		userRepository.save(user);
 		
 	}
 
