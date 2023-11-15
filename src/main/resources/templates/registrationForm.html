@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" th:href="@{../style.css}">
+</head>
+<body>
+    <div class="container">
+        <h2> REGISTRATION FORM </h2>
+        <form id="registrationForm" action="#" method="post">
+            <label for="email">EMAIL : </label>
+            <input type="email" id="email" name="email" required>
+            <span class="error" id="emailError"></span>
+            
+            <label for="contactNumber">CONTACT NUMBER : </label>
+            <input type="tel" id="contactNumber" name="contactNumber" pattern="[0-9]{10}" required>
+            <span class="error" id="contactNumberError"></span>
+
+            <label for="password">PASSWORD : </label>
+            <input type="password" id="password" name="password" required>
+            <span class="error" id="passwordError"></span>
+
+            
+
+            <input type="submit" value="REGISTER">
+        </form>
+    </div>
+
+    <!--  <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var contactNumber = document.getElementById('contactNumber').value;
+
+            // Email validation (simple check for '@' symbol)
+            if (email.indexOf('@') === -1) {
+                document.getElementById('emailError').innerHTML = 'Invalid email address';
+                event.preventDefault();
+            } else {
+                document.getElementById('emailError').innerHTML = '';
+            }
+
+            // Password validation (at least 8 characters)
+            if (password.length < 8) {
+                document.getElementById('passwordError').innerHTML = 'Password must be at least 8 characters';
+                event.preventDefault();
+            } else {
+                document.getElementById('passwordError').innerHTML = '';
+            }
+
+            // Contact number validation (10 digits)
+            if (!/^\d{10}$/.test(contactNumber)) {
+                document.getElementById('contactNumberError').innerHTML = 'Invalid contact number';
+                event.preventDefault();
+            } else {
+                document.getElementById('contactNumberError').innerHTML = '';
+            }
+        });
+    </script> -->
+</body>
+</html>
