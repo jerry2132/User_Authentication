@@ -1,26 +1,31 @@
-@charset "UTF-8";
+/*@charset "UTF-8";*/
 
         body {
             font-family: Arial, sans-serif;
-            background-color: #DE9F29;
+            /*background-color: #DE9F29;*/
+            background-image: url("/image/pen2.png");
+            background-size: cover;
             margin: 0;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            /*align-items: center;
+            justify-content: center;*/
             height: 100vh;
         }
 
         .container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
+            /*background-color: #fff;*/
+            background-color: rgba(255, 255, 255, 0);
+            margin: 150px 20px 20px 225px;
+            
+    		
+            /*border-radius: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/
+            width: 400px;
         }
 
         h2 {
             text-align: center;
-            color: #DE6E29;
+            color: #000000;
         }
 
         label {
@@ -37,16 +42,17 @@
             box-sizing: border-box;
             border: 1px solid #ccc;
             border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.2);
         }
 
         input[type="submit"] {
-            background-color: #DE6E29;
+            background-color: #000000;
             color: #fff;
             cursor: pointer;
         }
 
         input[type="submit"]:hover {
-            background-color: #C7571E;
+            background-color: #555555;
         }
 
         .error {
