@@ -10,6 +10,7 @@ import com.example.model.Otp;
 import com.example.model.User;
 import com.example.repository.OtpRepository;
 import com.example.repository.UserRepository;
+import com.example.util.OtpUtil;
 
 @Service
 public class UserService implements UserServiceContract{
@@ -69,6 +70,22 @@ public class UserService implements UserServiceContract{
 		
 		Optional<Otp> findUser = otpRepository.findOtpByEmail(user.getEmail());
 		
+		String code = OtpUtil.generateOtp();
+		
+		if(findUser.isPresent()) {
+			
+			Otp otp  = findUser.get();
+			otp.setCode(code);
+			otpRepository.save(otp);
+			
+		} 
+		else {
+			
+			Otp otp = new Otp();
+			otp.setCode(code);
+			otp.setEmail(user.getEmail());
+			otpRepository.save(otp);
+		}
 		
 	}
 	
