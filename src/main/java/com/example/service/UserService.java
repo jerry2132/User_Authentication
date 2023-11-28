@@ -2,9 +2,12 @@ package com.example.service;
 
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.mail.SimpleMailMessage;
+
 
 import com.example.model.Otp;
 import com.example.model.User;
@@ -23,6 +26,9 @@ public class UserService implements UserServiceContract{
 	
 	@Autowired
 	private OtpRepository otpRepository;
+	
+	 @Autowired
+	 private JavaMailSender javaMailSender;
 
 	@Override
 	public void saveUser(User user) {
@@ -76,6 +82,8 @@ public class UserService implements UserServiceContract{
 		
 		String code = OtpUtil.generateOtp();
 		
+		sendOtpEmail(user.getEmail(), code);
+		
 		if(findUser.isPresent()) {
 			
 			Otp otp  = findUser.get();
@@ -92,5 +100,14 @@ public class UserService implements UserServiceContract{
 		}
 		
 	}
+	
+	private void sendOtpEmail(String email, String otpCode) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(email);
+        message.setSubject("Your OTP Code");
+        message.setText("Your OTP code is: " + otpCode);
+
+        javaMailSender.send(message);
+    }
 	
 }

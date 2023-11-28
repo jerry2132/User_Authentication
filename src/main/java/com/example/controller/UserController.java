@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.model.User;
 import com.example.repository.UserRepository;
@@ -35,6 +36,13 @@ public class UserController {
 		return "auth";
 	}
 	
+	@ResponseBody
+	@GetMapping("/otp-validation")
+	public String vaidation() {
+		
+		return "validation";
+	}
+	
 	@PostMapping("/user-authentication")
 	public String authenticateUser(@ModelAttribute("user") User user,Model model) {
 		
@@ -42,6 +50,7 @@ public class UserController {
 		
 		
 	}
+
 	
 	@PostMapping("/registration")
 	public String saveUser(@ModelAttribute("user") User user,Model model)
