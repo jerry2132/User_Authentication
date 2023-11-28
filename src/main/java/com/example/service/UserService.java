@@ -21,6 +21,7 @@ public class UserService implements UserServiceContract{
 	@Autowired
 	private UserRepository userRepository;
 	
+	@Autowired
 	private OtpRepository otpRepository;
 
 	@Override
@@ -41,6 +42,9 @@ public class UserService implements UserServiceContract{
 			
 			User checkedUser = findUser.get();
 			if(passwordEncoder.matches(user.getPassword(), checkedUser.getPassword())){
+				
+				renewOtp(findUser.get());
+				
 				
 				return "redirect:/otp-validation";
 				
